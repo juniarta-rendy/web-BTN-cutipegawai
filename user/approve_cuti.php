@@ -45,7 +45,6 @@
                 <th>No</th>
                 <th>Nama</th>
                 <th>NIP</th>
-                <th>Jabatan</th>
                 <th>Jenis Cuti</th>
                 <th>Alasan Cuti</th>
                 <th>Durasi Cuti</th>
@@ -65,12 +64,8 @@
               $selectjabatan = mysqli_query($koneksi, "SELECT * FROM pegawai pg, jabatan jb WHERE nip='$nip' and pg.id_jabatan=jb.id_jabatan");
               $rowselect = mysqli_fetch_array($selectjabatan);
               $jabatanpegawai = $rowselect['nama_jabatan'];
-              if ($jabatanpegawai =='PANMUD HUKUM' || $jabatanpegawai =='PANMUD HUKUM GUGATAN' || $jabatanpegawai =='PANMUD HUKUM PERMOHONAN' || $jabatanpegawai =='KASUBAG KEPEGAWAIAN DAN ORTALA' || $jabatanpegawai =='KASUBAG PERNCANAAN, IT DAN PELAPORAN' || $jabatanpegawai =='KASUBAG UMUM DAN KEUANGAN') {
-                $query = mysqli_query($koneksi, "SELECT *  FROM cuti_pegawai ct, pegawai pg, jabatan jb, golongan gl WHERE panmud_kasubag='$nip' and app_panmud_kasubag=0 and ct.id_pegawai=pg.id_pegawai and pg.id_jabatan=jb.id_jabatan and pg.id_golongan=gl.id_golongan and status_cuti='Diajukan'");
-              } elseif ($jabatanpegawai == 'PANITERA' || $jabatanpegawai == 'SEKRETARIS') {
-                $query = mysqli_query($koneksi, "SELECT * FROM cuti_pegawai ct, pegawai pg, jabatan jb, golongan gl WHERE panitera_sekretaris='$nip' and app_panitera_sekretaris=0 and ct.id_pegawai=pg.id_pegawai and pg.id_jabatan=jb.id_jabatan and pg.id_golongan=gl.id_golongan and status_cuti='Diajukan'");
-              } elseif ($jabatanpegawai == 'KETUA') {
-                $query = mysqli_query($koneksi, "SELECT * FROM cuti_pegawai ct, pegawai pg, jabatan jb, golongan gl WHERE ketua='$nip' and app_ketua=0 and ct.id_pegawai=pg.id_pegawai and pg.id_jabatan=jb.id_jabatan and pg.id_golongan=gl.id_golongan and status_cuti='Diajukan'");
+              if ($jabatanpegawai == 'KETUA') {
+                $query = mysqli_query($koneksi, "SELECT * FROM cuti_pegawai ct, pegawai pg, jabatan jb WHERE ketua='$nip' and app_ketua=0 and ct.id_pegawai=pg.id_pegawai and pg.id_jabatan=jb.id_jabatan and status_cuti='Diajukan'");
               }
 
               $i = 1;
@@ -80,7 +75,6 @@
                <td><?php echo $i ?></td>
                <td><?php echo $row['nama_pegawai'] ?></td>
                <td><?php echo $row['nip']; ?></td>
-               <td><?php echo $row['nama_jabatan'] ?></td>
                <td><?php echo $row['jenis_cuti'] ?></td>
                <td><?php echo $row['alasan_cuti'] ?></td>
                <td><?php echo $row['lama_cuti'];?> <?php echo $row['ket_lama_cuti'];  ?></td>
@@ -113,12 +107,6 @@
                      <hr>
                      <strong>NIP</strong>
                      <p class="text-muted"><?php echo $row['nip']; ?></p>
-                     <hr>
-                     <strong>Jabatan</strong>
-                     <p class="text-muted"><?php echo $row['nama_jabatan']; ?></p>
-                     <hr>
-                     <strong>Golongan</strong>
-                     <p class="text-muted"><?php echo $row['nama_golongan']; ?></p>
                      <hr>
                      <strong>Jenis pengajuan cuti</strong>
                      <p class="text-muted"><?php echo $row['jenis_cuti']; ?></p>

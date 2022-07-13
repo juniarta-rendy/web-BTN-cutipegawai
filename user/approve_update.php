@@ -4,7 +4,7 @@
   $nippegawai = $_GET['nip'];
   $id = $_GET['id'];
 	$now = date('Y-m-d');
-	$Sql = "SELECT * FROM cuti_pegawai ct, pegawai pg, jabatan jb, golongan gl WHERE ct.id_pegawai=pg.id_pegawai AND pg.id_jabatan=jb.id_jabatan AND pg.id_golongan=gl.id_golongan AND pg.nip='$nippegawai' and ct.id_cutipegawai='$id'";
+	$Sql = "SELECT * FROM cuti_pegawai ct, pegawai pg, jabatan jb WHERE ct.id_pegawai=pg.id_pegawai AND pg.id_jabatan=jb.id_jabatan AND pg.nip='$nippegawai' and ct.id_cutipegawai='$id'";
 	$Qry = mysqli_query($koneksi, $Sql);
 	$data = mysqli_fetch_array($Qry);
   $jabatan = $data['nama_jabatan'];
@@ -50,18 +50,6 @@
                 <label class="control-label col-sm-3">NIP Pegawai</label>
                 <div class="col-sm-4">
                   <input type="text"  class="form-control" value="<?php echo $data['nip'];?> " readonly>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="control-label col-sm-3">Jabatan Pegawai</label>
-                <div class="col-sm-4">
-                  <input type="text"  class="form-control" value="<?php echo $data['nama_jabatan'];?> " readonly>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="control-label col-sm-3">Golongan</label>
-                <div class="col-sm-4">
-                  <input type="text"  class="form-control" value="<?php echo $data['nama_golongan'];?> " readonly>
                 </div>
               </div>
               <div class="form-group">
@@ -133,7 +121,6 @@
                         ?>
                         <option value="ketua">Disetujui</option>
                         <option value="Perubahan">Perubahan</option>
-                        <option value="Ditangguhkan">Ditangguhkan</option>
                         <option value="Tidak Disetujui">Tidak Disetujui</option>
                         <?php
                       

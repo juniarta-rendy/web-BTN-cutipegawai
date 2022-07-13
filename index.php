@@ -34,14 +34,19 @@
             <form action="check_login.php" method="POST">
               <h1>Selamat Datang</h1>
               <div>
-                <input type="text" class="form-control" placeholder="NIP" required="" name="nip" />
+                <input type="text" class="form-control" placeholder="NIP" name="nip" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" name="password" />
+                <input type="password" class="form-control" placeholder="Password"  name="password" />
               </div>
               <div>
                 <button type="submit" name="login" class="btn btn-default submit">Masuk</button>
               </div>
+              <div>
+                <button type="submit" name="register" class="btn btn-default submit">Tambah Data</button>
+              </div>
+              </form>
+              
 
               <div class="clearfix"></div>
 
@@ -55,7 +60,7 @@
                   <p>©2021 Bank Tabungan Negara, All Rights Reserved.</p>
                 </div>
               </div>
-            </form>
+            
           </section>
         </div>
 

@@ -50,7 +50,6 @@
                 <th>Sampai Dengan</th>
                 <th>Status</th>
                 <th>Keterangan</th>
-                <th>Action</th>
             </tr>
           </thead>
 
@@ -78,9 +77,6 @@
                </td>
                <td class="text-center">
                  <a href="#" class="btn btn-primary btn-xs "> <?php echo $row['ket_status_cuti']; ?></a>
-               </td>
-               <td>
-                 <a href="cetak_pdf.php?id=<?php echo $row['id_cutipegawai'] ?>" class="btn btn-info"><i class="fa fa-print"></i> Print PDF</a>
                </td>
              </tr>
 

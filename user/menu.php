@@ -10,7 +10,7 @@
   $selectjabatan = mysqli_query($koneksi, "SELECT * FROM pegawai pg, jabatan jb WHERE nip='$nip' and pg.id_jabatan=jb.id_jabatan");
   $rowselect = mysqli_fetch_array($selectjabatan);
   $jabatanpegawai = $rowselect['nama_jabatan'];
-  if ($jabatanpegawai == 'PANITERA' || $jabatanpegawai == 'SEKRETARIS' || $jabatanpegawai =='KETUA' || $jabatanpegawai =='PANMUD HUKUM' || $jabatanpegawai =='PANMUD HUKUM GUGATAN' || $jabatanpegawai =='PANMUD HUKUM PERMOHONAN' || $jabatanpegawai =='KASUBAG KEPEGAWAIAN DAN ORTALA' || $jabatanpegawai =='KASUBAG PERNCANAAN, IT DAN PELAPORAN' || $jabatanpegawai =='KASUBAG UMUM DAN KEUANGAN') {
+  if ($jabatanpegawai =='KETUA') {
     ?>
     <div class="menu_section">
     <h3>Menu Khusus</h3>
@@ -24,9 +24,9 @@
     </div>
     <?php
   }
- ?>
-
-<div class="menu_section">
+  else{
+    ?>
+      <div class="menu_section">
   <h3>Management</h3>
   <ul class="nav side-menu">
     <li><a href="#"><i class="fa fa-calendar"></i> Pengajuan Cuti <span class="fa fa-chevron-down"></span></a>
@@ -39,7 +39,6 @@
       <ul class="nav child_menu">
         <li><a href="index.php?page=disetujui">Disetujui</a></li>
         <li><a href="index.php?page=perubahan">Perubahan</a></li>
-        <li><a href="index.php?page=ditangguhkan">Ditangguhkan</a></li>
         <li><a href="index.php?page=tidakdisetujui">Tidak Disetujui</a></li>
       </ul>
     </li>
@@ -50,3 +49,8 @@
     </li>
   </ul>
 </div>
+    <?php
+  }
+ ?>
+
+

@@ -24,4 +24,5 @@ if (isset($_POST['login'])) {
     echo "<script>alert('Username & Password Salah !'); document.location='index.php';</script>";
   }
 }
+else if (isset($_POST['register'])) header("Location: registrasi.php");
  ?>

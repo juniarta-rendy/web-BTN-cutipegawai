@@ -35,7 +35,7 @@
         // Query untuk menampilkan profile pegawai
         // Select berdasarkan session nip yang tersimpan
         include '../database/koneksi.php';
-        $query = mysqli_query($koneksi,"SELECT * FROM pegawai pg, jabatan jb, golongan gl WHERE nip='$nip' and pg.id_jabatan=jb.id_jabatan and pg.id_golongan=gl.id_golongan");
+        $query = mysqli_query($koneksi,"SELECT * FROM pegawai pg, jabatan jb WHERE nip='$nip' and pg.id_jabatan=jb.id_jabatan");
         $row = mysqli_fetch_array($query);
 
         $selectfoto = mysqli_query($koneksi, "SELECT * FROM user WHERE nip='$nip'");
@@ -57,19 +57,14 @@
 
           </div>
            <!-- Menampilkan data pegawai -->
-          <h3 class="profile-username text-center">User</h3>
+          <h3 class="profile-username text-center"><?php echo $row['nama_pegawai']; ?></h3>
           <strong>Nama Lengkap</strong>
           <p class="text-muted"><?php echo $row['nama_pegawai']; ?></p>
           <hr>
           <strong>NIP</strong>
           <p class="text-muted"><?php echo $row['nip']; ?></p>
           <hr>
-          <strong>Jabatan</strong>
-          <p class="text-muted"><?php echo $row['nama_jabatan']; ?></p>
-          <hr>
-          <strong>Golongan</strong>
-          <p class="text-muted"><?php echo $row['nama_golongan']; ?></p>
-          <hr>
+          
           <hr>
         </div>
       </div>
